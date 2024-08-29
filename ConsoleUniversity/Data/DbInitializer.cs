@@ -15,8 +15,64 @@ namespace ConsoleUniversity.Data
 
             var students = new Student[] 
             {
-                new Student {FirstName = "Artjom", LastName = "Skatskov", EnrollmentDate=DateTime.Parse("2069-04-20")}
+                new Student {FirstName = "Allan", LastName = "Leibenau", EnrollmentDate=DateTime.Parse("2075-02-06")},
+                new Student {FirstName = "Sienna", LastName = "Fuegonasus", EnrollmentDate=DateTime.Parse("2069-04-20")},
+                new Student {FirstName = "Meredith", LastName = "Alonso", EnrollmentDate=DateTime.Parse("2002-09-01")},
+                new Student {FirstName = "John", LastName = "Smith", EnrollmentDate=DateTime.Parse("1984-11-11")},
+                new Student {FirstName = "Bob", LastName = "Bobby", EnrollmentDate=DateTime.Parse("1910-12-30")},
+                new Student {FirstName = "Jack", LastName = "Black", EnrollmentDate=DateTime.Parse("2045-02-05")},
+                new Student {FirstName = "Godric", LastName = "Unicorn", EnrollmentDate=DateTime.Parse("1991-06-23")}
             };
+
+            foreach (Student student in students)
+            {
+                context.Students.Add(student);
+            }
+            context.SaveChanges();
+
+            var courses = new Course[]
+            {
+                new Course{CourseID = 1050, Title = "Chemistry", Credits = 3},
+                new Course{CourseID = 4022, Title = "Micro-economics", Credits = 3},
+                new Course{CourseID = 4041, Title = "Micro-economics", Credits = 3},
+                new Course{CourseID = 1045, Title = "Calculus", Credits = 4},
+                new Course{CourseID = 3141, Title = "Trigonometry", Credits = 4},
+                new Course{CourseID = 2021, Title = "Composition", Credits = 3},
+                new Course{CourseID = 2042, Title = "Literature", Credits = 4},
+                new Course{CourseID = 1944, Title = "Responsible Spending", Credits = 1}
+            };
+            foreach (Course course in courses)
+            {
+                context.Courses.Add(course);
+            }
+            context.SaveChanges();
+
+            var enrollments = new Enrollment[]
+            {
+                new Enrollment{StudentID = 1, CourseID = 1050, Grade = Grade.A },
+                new Enrollment{StudentID = 1, CourseID = 1944, Grade = Grade.B },
+                new Enrollment{StudentID = 1, CourseID = 4041, Grade = Grade.C},
+
+                new Enrollment{StudentID = 2, CourseID = 1050, Grade = Grade.F },
+                new Enrollment{StudentID = 2, CourseID = 2042, Grade = Grade.C },
+                new Enrollment{StudentID = 2, CourseID = 1045, Grade = Grade.A },
+
+                new Enrollment{StudentID = 3, CourseID = 2021, Grade = Grade.A },
+
+                new Enrollment{StudentID = 4, CourseID = 3141, Grade = Grade.B },
+                new Enrollment{StudentID = 4, CourseID = 2021, Grade = Grade.C },
+
+                new Enrollment{StudentID = 5, CourseID = 4041, Grade = Grade.C },
+
+                new Enrollment{StudentID = 6, CourseID = 2021, Grade = Grade.A },
+
+                new Enrollment{StudentID = 7, CourseID = 1944, Grade = Grade.B }
+            };
+            foreach (Enrollment enrollment in enrollments)
+            {
+                context.Enrollments.Add(enrollment);
+            }
+            context.SaveChanges();
         }
 
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7hEbCb2RxFPsM++/e4thUrSMphw9RP9PpgVJRtZYQyfV6aBTbl8NxjJVy1fWnsMHfUm+D+EEtkGxyClmlls58Q==",
+  "dgSpecHash": "twX73C4uZa4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\opilane\\source\\repos\\ConsoleUniversity2024Allan\\ConsoleUniversity\\ConsoleUniversity\\ConsoleUniversity.csproj",
+  "projectFilePath": "C:\\Users\\opilane\\source\\repos\\TARpe23Contoso\\ConsoleUniversity\\ConsoleUniversity.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\opilane\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\opilane\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
