@@ -1,9 +1,9 @@
-﻿using ConsoleUniversity.Data;
-using ConsoleUniversity.Models;
+﻿using ConstosoUniversity.Data;
+using ConstosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConsoleUniversity.Controllers
+namespace ConstosoUniversity.Controllers
 {
     public class StudentsController : Controller
     {

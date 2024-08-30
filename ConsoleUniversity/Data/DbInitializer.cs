@@ -1,6 +1,6 @@
-﻿using ConsoleUniversity.Models;
+﻿using ConstosoUniversity.Models;
 
-namespace ConsoleUniversity.Data
+namespace ConstosoUniversity.Data
 {
     public class DbInitializer
     {

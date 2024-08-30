@@ -1,4 +1,4 @@
-﻿namespace ConsoleUniversity.Models
+﻿namespace ConstosoUniversity.Models
 {
     public enum Grade 
     {

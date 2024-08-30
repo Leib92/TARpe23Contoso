@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ConsoleUniversity.Models
+namespace ConstosoUniversity.Models
 {
     public class Student
     {

@@ -1,7 +1,7 @@
-﻿using ConsoleUniversity.Models;
+﻿using ConstosoUniversity.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConsoleUniversity.Data
+namespace ConstosoUniversity.Data
 {
     public class SchoolContext : DbContext
     {
