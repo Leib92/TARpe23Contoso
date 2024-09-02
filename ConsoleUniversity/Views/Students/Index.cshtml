@@ -29,13 +29,13 @@
         {
            <tr>
                <td>
-                   @Html.DisplayFor(modelITem => item.LastName)
+                   @Html.DisplayFor(Model => item.LastName)
                </td>
                <td>
-                   @Html.DisplayNameFor(Model => Model.FirstName)
+                   @Html.DisplayFor(Model => item.FirstName)
                </td>
                <td>
-                   @Html.DisplayNameFor(Model => Model.EnrollmentDate)
+                   @Html.DisplayFor(Model => item.EnrollmentDate)
                </td>
                <td>
                    <a asp-action="Edit" asp-route-id="item.ID">Edit</a>
