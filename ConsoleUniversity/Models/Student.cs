@@ -4,7 +4,7 @@ namespace ConstosoUniversity.Models
 {
     public class Student
     {
-        [Key] //primary key
+        // [Key] //primary key
         public int ID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
