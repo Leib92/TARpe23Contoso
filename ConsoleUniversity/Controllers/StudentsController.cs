@@ -92,7 +92,8 @@ namespace ConstosoUniversity.Controllers
             {
                 return NotFound();
             }
-            var studentToEdit = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+            var studentToEdit = await _context.Students
+                .FirstOrDefaultAsync(m => m.ID == id);
             if (studentToEdit == null)
             {
                 return NotFound();
@@ -102,7 +103,7 @@ namespace ConstosoUniversity.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("Id,LastName,FirstName,EnrollmentDate")] Student modifiedStudent)
+        public async Task<IActionResult> Edit([Bind("ID,LastName,FirstName,EnrollmentDate")] Student modifiedStudent)
         {
             if (ModelState.IsValid)
             {
