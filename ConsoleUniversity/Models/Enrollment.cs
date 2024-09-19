@@ -1,8 +1,8 @@
-﻿namespace ConstosoUniversity.Models
+﻿namespace ContosoUniversity.Models
 {
-    public enum Grade 
+    public enum Grade
     {
-        A,B,C,D,F
+        A, B, C, D, F
     }
     public class Enrollment
     {

@@ -1,9 +1,9 @@
-﻿using ConstosoUniversity.Data;
-using ConstosoUniversity.Models;
+﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace ConstosoUniversity.Controllers
+namespace ContosoUniversity.Controllers
 {
     public class StudentsController : Controller
     {
@@ -21,17 +21,17 @@ namespace ConstosoUniversity.Controllers
 
 
         [HttpGet]
-        public IActionResult Create() 
+        public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,LastName,FirstName,EnrollmentDate")] Student student) 
+        public async Task<IActionResult> Create([Bind("ID,LastName,FirstName,EnrollmentDate")] Student student)
         {
-            if (ModelState.IsValid) 
-            { 
+            if (ModelState.IsValid)
+            {
                 _context.Students.Add(student);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -40,16 +40,16 @@ namespace ConstosoUniversity.Controllers
         }
 
 
-        public async Task<IActionResult> Delete(int? id) 
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null) 
+            if (id == null)
             {
                 return NotFound();
             }
 
             var student = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (student == null) 
+            if (student == null)
             {
                 return NotFound();
             }
@@ -59,7 +59,7 @@ namespace ConstosoUniversity.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id) 
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var student = await _context.Students.FindAsync(id);
             _context.Students.Remove(student);
@@ -119,13 +119,31 @@ namespace ConstosoUniversity.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Clone([Bind("ID,LastName,FirstName,EnrollmentDate")] Student selectedStudent, int? id)
+        public async Task<IActionResult> Clone(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            var existingStudent = Details(id);
+            var existingStudent = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
+
+            if (existingStudent == null)
+            {
+                return NotFound();
+            }
+            return View(existingStudent);
+        }
+
+        [HttpPost, ActionName("Clone")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Clone([Bind("ID,LastName,FirstName,EnrollmentDate")] Student existingStudent)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Students.Add(existingStudent);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
             return View(existingStudent);
         }
     }

@@ -1,19 +1,19 @@
-﻿using ConstosoUniversity.Models;
+﻿using ContosoUniversity.Models;
 
-namespace ConstosoUniversity.Data
+namespace ContosoUniversity.Data
 {
     public class DbInitializer
     {
-        public static void Initializer(SchoolContext context) 
-        { 
+        public static void Initializer(SchoolContext context)
+        {
             context.Database.EnsureCreated();
 
-            if  (context.Students.Any()) 
+            if (context.Students.Any())
             {
                 return;
             }
 
-            var students = new Student[] 
+            var students = new Student[]
             {
                 new Student {FirstName = "Allan", LastName = "Leibenau", EnrollmentDate=DateTime.Parse("2075-02-06")},
                 new Student {FirstName = "Sienna", LastName = "Fuegonasus", EnrollmentDate=DateTime.Parse("2069-04-20")},

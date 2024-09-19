@@ -1,4 +1,4 @@
-using ConstosoUniversity.Data;
+using ContosoUniversity.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
