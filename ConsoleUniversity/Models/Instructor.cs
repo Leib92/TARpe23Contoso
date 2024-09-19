@@ -16,5 +16,11 @@ namespace ContosoUniversity.Models
         [Column("FirstName")]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Column("Enrollment Date")]
+        [Display(Name = "Enrollment Date")]
+        public DateTime EnrollmentDate { get; set; }
+
     }
 }
