@@ -136,3 +136,4 @@ C:\Users\opilane\source\repos\TARpe23Contoso\ConsoleUniversity\obj\Debug\net8.0\
 C:\Users\opilane\source\repos\TARpe23Contoso\ConsoleUniversity\obj\Debug\net8.0\ContosoUniversity.pdb
 C:\Users\opilane\source\repos\TARpe23Contoso\ConsoleUniversity\obj\Debug\net8.0\ContosoUniversity.genruntimeconfig.cache
 C:\Users\opilane\source\repos\TARpe23Contoso\ConsoleUniversity\obj\Debug\net8.0\ref\ContosoUniversity.dll
+C:\Users\opilane\Source\Repos\TARpe23Contoso\ConsoleUniversity\bin\Debug\net8.0\System.Text.Json.dll

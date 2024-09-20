@@ -41,12 +41,10 @@ namespace ContosoUniversity.Data
                 new Course{CourseID = 2042, Title = "Literature", Credits = 4},
                 new Course{CourseID = 1944, Title = "Responsible Spending", Credits = 1}
             };
-            foreach (Course course in courses)
-            {
-                context.Courses.Add(course);
-            }
+            context.Courses.AddRange(courses);
             context.SaveChanges();
 
+            if (context.Enrollments.Any()) { return; }
             var enrollments = new Enrollment[]
             {
                 new Enrollment{StudentID = 1, CourseID = 1050, Grade = Grade.A },
@@ -68,11 +66,23 @@ namespace ContosoUniversity.Data
 
                 new Enrollment{StudentID = 7, CourseID = 1944, Grade = Grade.B }
             };
-            foreach (Enrollment enrollment in enrollments)
-            {
-                context.Enrollments.Add(enrollment);
-            }
+            context.Enrollments.AddRange(enrollments);
             context.SaveChanges();
+
+            // if (context.Instructors.Any() { return; }
+            var instructors = new Instructor[]
+            {
+                new Instructor
+                {
+                    LastName = "Karlson",
+                    FirstName = "Mark",
+                    HireDate = DateTime.Parse("2003-09-01"),
+                    Mood = Mood.High,
+                    VocationCredientials = "Greed Incarnate",
+                    WorkYears = 20
+                }
+            };
+            
         }
 
     }

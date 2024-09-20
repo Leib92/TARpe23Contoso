@@ -20,7 +20,9 @@ namespace ContosoUniversity.Models
         [StringLength(50)]
         [Column("Enrollment Date")]
         [Display(Name = "Enrollment Date")]
-        public DateTime EnrollmentDate { get; set; }
+        
+        public DateTime HireDate { get; set; }
+
 
     }
 }
