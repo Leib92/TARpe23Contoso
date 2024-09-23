@@ -76,10 +76,10 @@ namespace ContosoUniversity.Data
                 {
                     LastName = "Karlson",
                     FirstName = "Mark",
-                    HireDate = DateTime.Parse("2003-09-01"),
-                    Mood = Mood.High,
-                    VocationCredientials = "Greed Incarnate",
-                    WorkYears = 20
+                    //HireDate = DateTime.Parse("2003-09-01"),
+                    //Mood = Mood.High,
+                    //VocationCredientials = "Greed Incarnate",
+                    //WorkYears = 20
                 }
             };
             
