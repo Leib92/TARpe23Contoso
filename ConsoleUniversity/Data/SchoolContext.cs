@@ -10,12 +10,17 @@ namespace ContosoUniversity.Data
         public DbSet<Course> Courses { get; set; }
         public DbSet<Enrollment> Enrollments { get; set; }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+        //public DbSet<OfficeAssignment> OfficeAssignments { get; set; }
+        //public DbSet<CourseAssignment> CourseAssignments { get; set; }
+        public DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<Enrollment>().ToTable("Enrollement");
             modelBuilder.Entity<Student>().ToTable("Student");
+            modelBuilder.Entity<Department>().ToTable("Departments");
         }
     }
 }

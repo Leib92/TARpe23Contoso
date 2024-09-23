@@ -7,26 +7,15 @@ namespace ContosoUniversity.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
         [StringLength(50)]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
-        [Required]
-        [StringLength(50)]
-        [Column("FirstName")]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Required]
-        [StringLength(50)]
-        [Column("Enrollment Date")]
-        [Display(Name = "Enrollment Date")]
-        public string EnrollmentDate { get; set; }
-        
-        [Required]
-        [StringLength(50)]
-        [Column("Enrollment Date")]
-        [Display(Name = "Enrollment Date")]
+        public string FullName { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-mm-dd}", ApplyFormatInEditMode = true)]
         public DateTime HireDate { get; set; }
+        public Instructor? Mood { get; set; }
+        [StringLength(50)]
+        public string VocationCredientials { get; set; }
+        public int WorkYears { get; set; }
 
 
     }

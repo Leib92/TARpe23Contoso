@@ -24,10 +24,7 @@ namespace ContosoUniversity.Data
                 new Student {FirstName = "Godric", LastName = "Unicorn", EnrollmentDate=DateTime.Parse("1991-06-23")}
             };
 
-            foreach (Student student in students)
-            {
-                context.Students.Add(student);
-            }
+            context.Students.AddRange(students);
             context.SaveChanges();
 
             var courses = new Course[]
@@ -74,15 +71,49 @@ namespace ContosoUniversity.Data
             {
                 new Instructor
                 {
-                    LastName = "Karlson",
-                    FirstName = "Mark",
-                    //HireDate = DateTime.Parse("2003-09-01"),
+                    FullName = "Karl Markson",
+                    HireDate = DateTime.Parse("2003-09-01"),
                     //Mood = Mood.High,
-                    //VocationCredientials = "Greed Incarnate",
-                    //WorkYears = 20
+                    VocationCredientials = "Greed Incarnate",
+                    WorkYears = 20
                 }
             };
-            
+            //context.Instructors.AddRange(instructors);
+            //context.SaveChanges();
+
+            if (context.Departments.Any()) { return; }
+            var departments = new Department[]
+            {
+                new Department
+                {
+                    Name = "InfoTechnology",
+                    Budget = 0,
+                    StartDate = DateTime.Parse("2024-09-01"),
+                    SkeletonsSummoned = 0, // normies
+                    InstructorID = 1
+                },
+
+                new Department
+                {
+                    Name = "LICHDOM",
+                    Budget = 0,
+                    StartDate = DateTime.Parse("2024-09-01"),
+                    SkeletonsSummoned = 5318008, // we are screwed guys
+                    InstructorID = 2
+                },
+
+                new Department
+                {
+                    Name = "Pathfinder 2e",
+                    Budget = 0,
+                    StartDate = DateTime.Parse("2024-09-01"),
+                    SkeletonsSummoned = 2, // i have no dice and i must roll
+                    InstructorID = 3
+                }
+            };
+            context.Departments.AddRange(departments);
+            context.SaveChanges();
+
         }
 
     }

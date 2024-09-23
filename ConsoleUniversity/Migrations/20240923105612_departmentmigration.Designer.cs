@@ -4,6 +4,7 @@ using ContosoUniversity.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoUniversity.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    partial class SchoolContextModelSnapshot : ModelSnapshot
+    [Migration("20240923105612_departmentmigration")]
+    partial class departmentmigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,60 +33,13 @@ namespace ContosoUniversity.Migrations
                     b.Property<int>("Credits")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DepartmentID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("CourseID");
 
-                    b.HasIndex("DepartmentID");
-
                     b.ToTable("Course", (string)null);
-                });
-
-            modelBuilder.Entity("ContosoUniversity.Models.Department", b =>
-                {
-                    b.Property<int>("DepartmentID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DepartmentID"));
-
-                    b.Property<decimal>("Budget")
-                        .HasColumnType("Money");
-
-                    b.Property<int?>("ForeignStudentID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("InstructorID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<byte?>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("tinyint");
-
-                    b.Property<int?>("SkeletonsSummoned")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("DepartmentID");
-
-                    b.HasIndex("ForeignStudentID");
-
-                    b.HasIndex("InstructorID");
-
-                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Enrollment", b =>
@@ -112,35 +68,6 @@ namespace ContosoUniversity.Migrations
                     b.ToTable("Enrollement", (string)null);
                 });
 
-            modelBuilder.Entity("ContosoUniversity.Models.Instructor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasColumnName("FirstName");
-
-                    b.Property<DateTime>("HireDate")
-                        .HasMaxLength(50)
-                        .HasColumnType("datetime2")
-                        .HasColumnName("Hire Date");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Instructor");
-                });
-
             modelBuilder.Entity("ContosoUniversity.Models.Student", b =>
                 {
                     b.Property<int>("ID")
@@ -165,28 +92,6 @@ namespace ContosoUniversity.Migrations
                     b.ToTable("Student", (string)null);
                 });
 
-            modelBuilder.Entity("ContosoUniversity.Models.Course", b =>
-                {
-                    b.HasOne("ContosoUniversity.Models.Department", null)
-                        .WithMany("Courses")
-                        .HasForeignKey("DepartmentID");
-                });
-
-            modelBuilder.Entity("ContosoUniversity.Models.Department", b =>
-                {
-                    b.HasOne("ContosoUniversity.Models.Student", "ForeignStudent")
-                        .WithMany()
-                        .HasForeignKey("ForeignStudentID");
-
-                    b.HasOne("ContosoUniversity.Models.Instructor", "Administrator")
-                        .WithMany()
-                        .HasForeignKey("InstructorID");
-
-                    b.Navigation("Administrator");
-
-                    b.Navigation("ForeignStudent");
-                });
-
             modelBuilder.Entity("ContosoUniversity.Models.Enrollment", b =>
                 {
                     b.HasOne("ContosoUniversity.Models.Course", "Course")
@@ -209,11 +114,6 @@ namespace ContosoUniversity.Migrations
             modelBuilder.Entity("ContosoUniversity.Models.Course", b =>
                 {
                     b.Navigation("Enrollments");
-                });
-
-            modelBuilder.Entity("ContosoUniversity.Models.Department", b =>
-                {
-                    b.Navigation("Courses");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Student", b =>
