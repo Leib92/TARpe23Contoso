@@ -1,5 +1,7 @@
 ﻿using ContosoUniversity.Data;
+using ContosoUniversity.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContosoUniversity.Controllers
@@ -37,7 +39,25 @@ namespace ContosoUniversity.Controllers
             }
             return View(department);
         }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName");
+            return View();
+        }
 
-
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Name,Budget,StartDate,RowVersion,InstructorID,ForeignStudent,SummonedSkeleton")] Department department)
+        {
+            if (!ModelState.IsValid)
+            {
+                _context.Add(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName", department.InstructorID);
+            return View();
+        }
     }
 }
