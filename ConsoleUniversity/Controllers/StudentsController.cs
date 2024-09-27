@@ -118,28 +118,16 @@ namespace ContosoUniversity.Controllers
             return View(modifiedStudent);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Clone(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var existingStudent = await _context.Students.FirstOrDefaultAsync(m => m.ID == id);
-
-            if (existingStudent == null)
-            {
-                return NotFound();
-            }
-            return View(existingStudent);
-        }
-
         [HttpPost, ActionName("Clone")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Clone([Bind("ID,LastName,FirstName,EnrollmentDate")] Student existingStudent)
         {
             if (ModelState.IsValid)
             {
+                if (existingStudent.ID == null)
+                {
+                    return BadRequest();
+                }
                 _context.Students.Add(existingStudent);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
