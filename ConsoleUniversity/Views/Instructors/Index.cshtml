@@ -1,28 +1,28 @@
 ﻿@model IEnumerable<Instructor>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Instructors";
 }
 
-<h1>Õpilaste Index</h1>
+<h2>Instructors</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Instructor</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(Model => Model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(Model => Model.HireDate)
-            </th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Hire Date</th>
+            <th>Office Location</th>
+            <th>Courses</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Instructors)
         {
             <tr>
                 <td>

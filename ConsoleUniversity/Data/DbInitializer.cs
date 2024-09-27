@@ -66,20 +66,18 @@ namespace ContosoUniversity.Data
             context.Enrollments.AddRange(enrollments);
             context.SaveChanges();
 
-            // if (context.Instructors.Any() { return; }
+            if (context.Instructors.Any()) { return; }
             var instructors = new Instructor[]
             {
                 new Instructor
                 {
-                    FullName = "Karl Markson",
-                    HireDate = DateTime.Parse("2003-09-01"),
-                    //Mood = Mood.High,
-                    VocationCredientials = "Greed Incarnate",
-                    WorkYears = 20
+                    FirstName = "Karl",
+                    LastName = "Markson",
+                    HireDate = DateTime.Parse("2003-09-01")
                 }
             };
-            //context.Instructors.AddRange(instructors);
-            //context.SaveChanges();
+            context.Instructors.AddRange(instructors);
+            context.SaveChanges();
 
             if (context.Departments.Any()) { return; }
             var departments = new Department[]
