@@ -1,22 +1,19 @@
-﻿@model IEnumerable<Instructor>
+﻿@model ContosoUniversity.Models.InstructorIndexData
 
 @{
     ViewData["Title"] = "Instructors";
 }
-
-<h2>Instructors</h2>
-
+<h2>Instructor</h2>
 <p>
     <a asp-action="Create">Create New Instructor</a>
 </p>
-
 <table class="table">
     <thead>
         <tr>
             <th>Last Name</th>
             <th>First Name</th>
             <th>Hire Date</th>
-            <th>Office Location</th>
+            <th>Office Locations</th>
             <th>Courses</th>
             <th></th>
         </tr>
@@ -24,12 +21,26 @@
     <tbody>
         @foreach (var item in Model.Instructors)
         {
-            <tr>
+            string selectedRow = "";
+            if (item.Id == (int?)ViewData["InstructorID"])
+            {
+                selectedRow = "table-success";
+            }
+            <tr class="@selectedRow">
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.HireDate)</td>
                 <td>
-                    @Html.DisplayFor(Model => item.FullName)
+                    @if (item.OfficeAssignment != null)
+                    {
+                        @item.OfficeAssignment.Location
+                    }
                 </td>
                 <td>
-                    @Html.DisplayFor(Model => item.HireDate)
+                    @foreach (var courses in item.CourseAssignments)
+                    {
+                        @courses.Course.CourseID @: @courses,Course,Title <br />
+                    }
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>

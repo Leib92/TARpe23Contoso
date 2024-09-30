@@ -50,5 +50,24 @@ namespace ContosoUniversity.Controllers
 
             return View(vm);
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("LastName,FirstName,HireDate")] Instructor instructor)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Instructors.Add(instructor);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View(instructor);
+        }
     }
 }
