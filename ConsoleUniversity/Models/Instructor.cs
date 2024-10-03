@@ -30,11 +30,15 @@ namespace ContosoUniversity.Models
         public ICollection<CourseAssignment>? CourseAssignments { get; set; }
 
         public OfficeAssignment? OfficeAssignment { get; set; }
+        
+        // made 3 stuff up below
 
+        [StringLength(50)]
+        public string? MagicLore { get; set; }
 
+        public Student? Apprentice { get; set; }
 
-
-        // think 3 stuff
+        public int? DeathCount { get; set; }
 
 
     }

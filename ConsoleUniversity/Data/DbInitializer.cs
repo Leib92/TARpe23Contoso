@@ -73,7 +73,29 @@ namespace ContosoUniversity.Data
                 {
                     FirstName = "Karl",
                     LastName = "Markson",
-                    HireDate = DateTime.Parse("2003-09-01")
+                    HireDate = DateTime.Parse("2003-09-01"),
+                    MagicLore = "Common Sense"
+                },
+                new Instructor
+                {
+                    FirstName = "Acererak",
+                    LastName = "Eternal",
+                    HireDate = DateTime.Parse("1420-11-30"),
+                    MagicLore = "NECROMANCY"
+                },
+                new Instructor
+                {
+                    FirstName = "Baba",
+                    LastName = "Yaga",
+                    HireDate = DateTime.Parse("841-03-23"),
+                    MagicLore = "Witchcraft"
+                },
+                new Instructor
+                {
+                    FirstName = "Vlad",
+                    LastName = "Dracula",
+                    HireDate = DateTime.Parse("1421-04-15"),
+                    MagicLore = "Stability"
                 }
             };
             context.Instructors.AddRange(instructors);
@@ -85,7 +107,7 @@ namespace ContosoUniversity.Data
                 new Department
                 {
                     Name = "InfoTechnology",
-                    Budget = 0,
+                    Budget = 14,
                     StartDate = DateTime.Parse("2024-09-01"),
                     SkeletonsSummoned = 0, // normies
                     InstructorID = 1
@@ -94,7 +116,7 @@ namespace ContosoUniversity.Data
                 new Department
                 {
                     Name = "LICHDOM",
-                    Budget = 0,
+                    Budget = 5,
                     StartDate = DateTime.Parse("2024-09-01"),
                     SkeletonsSummoned = 5318008, // we are screwed guys
                     InstructorID = 2
