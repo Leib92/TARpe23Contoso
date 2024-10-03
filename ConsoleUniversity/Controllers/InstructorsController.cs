@@ -96,6 +96,7 @@ namespace ContosoUniversity.Controllers
             _context.Instructors.Remove(instructor);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+            // add method to remove InstructorID from existing Department
         }
     }
 }
