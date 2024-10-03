@@ -1,14 +1,12 @@
-﻿@model             Student
+﻿@model Instructor
 
 @{
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
-
-<h1>Are you SURE about deleting this?</h1>
+<h2>You sure about deleting instructor?</h2>
 <div>
-    <h1>Instructor</h1>
+    <h4>Instructor</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -24,15 +22,21 @@
             @Html.DisplayFor(model => model.FirstName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
+            @Html.DisplayNameFor(model => model.HireDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.EnrollmentDate)
+            @Html.DisplayFor(model => model.HireDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MagicLore)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MagicLore)
         </dd>
     </dl>
 
     <form asp-action="Delete">
-        <input type="hidden" asp-for="ID"/>
+        <input type="hidden" asp-for="Id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> | <a asp-action="Index">Cancel</a>
     </form>
 </div>

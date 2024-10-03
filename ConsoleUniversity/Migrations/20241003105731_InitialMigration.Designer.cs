@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoUniversity.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20240927130930_tes1000")]
-    partial class tes1000
+    [Migration("20241003105731_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,7 +67,7 @@ namespace ContosoUniversity.Migrations
 
                     b.HasIndex("InstructorId");
 
-                    b.ToTable("CourseAssignment");
+                    b.ToTable("CourseAssignments");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Department", b =>
@@ -146,6 +146,12 @@ namespace ContosoUniversity.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("ApprenticeID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DeathCount")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -159,7 +165,13 @@ namespace ContosoUniversity.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("MagicLore")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ApprenticeID");
 
                     b.ToTable("Instructors");
                 });
@@ -176,7 +188,7 @@ namespace ContosoUniversity.Migrations
 
                     b.HasKey("InstructorId");
 
-                    b.ToTable("OfficeAssignment");
+                    b.ToTable("OfficeAssignments");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Student", b =>
@@ -261,6 +273,15 @@ namespace ContosoUniversity.Migrations
                     b.Navigation("Course");
 
                     b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("ContosoUniversity.Models.Instructor", b =>
+                {
+                    b.HasOne("ContosoUniversity.Models.Student", "Apprentice")
+                        .WithMany()
+                        .HasForeignKey("ApprenticeID");
+
+                    b.Navigation("Apprentice");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.OfficeAssignment", b =>

@@ -64,7 +64,7 @@ namespace ContosoUniversity.Migrations
 
                     b.HasIndex("InstructorId");
 
-                    b.ToTable("CourseAssignment");
+                    b.ToTable("CourseAssignments");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Department", b =>
@@ -163,8 +163,8 @@ namespace ContosoUniversity.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MagicLore")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -185,7 +185,7 @@ namespace ContosoUniversity.Migrations
 
                     b.HasKey("InstructorId");
 
-                    b.ToTable("OfficeAssignment");
+                    b.ToTable("OfficeAssignments");
                 });
 
             modelBuilder.Entity("ContosoUniversity.Models.Student", b =>

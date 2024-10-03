@@ -106,7 +106,7 @@ namespace ContosoUniversity.Data
             {
                 new Department
                 {
-                    Name = "InfoTechnology",
+                    Name = "Info Technology",
                     Budget = 14,
                     StartDate = DateTime.Parse("2024-09-01"),
                     SkeletonsSummoned = 0, // normies
@@ -117,7 +117,7 @@ namespace ContosoUniversity.Data
                 {
                     Name = "LICHDOM",
                     Budget = 5,
-                    StartDate = DateTime.Parse("2024-09-01"),
+                    StartDate = DateTime.Parse("2010-02-01"),
                     SkeletonsSummoned = 5318008, // we are screwed guys
                     InstructorID = 2
                 },
@@ -126,9 +126,18 @@ namespace ContosoUniversity.Data
                 {
                     Name = "Pathfinder 2e",
                     Budget = 0,
-                    StartDate = DateTime.Parse("2024-09-01"),
+                    StartDate = DateTime.Parse("2024-12-24"),
                     SkeletonsSummoned = 2, // i have no dice and i must roll
                     InstructorID = 3
+                },
+
+                new Department
+                {
+                    Name = "Redstone 101",
+                    Budget = 0,
+                    StartDate = DateTime.Parse("1984-08-04"),
+                    SkeletonsSummoned = 0, // you'd think they'd have more
+                    InstructorID = 4
                 }
             };
             context.Departments.AddRange(departments);
