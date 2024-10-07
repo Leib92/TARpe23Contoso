@@ -23,6 +23,6 @@ namespace ContosoUniversity.Models
         [Timestamp]
         public byte? RowVersion { get; set; }
         public Instructor? Administrator { get; set; }
-        public ICollection<Course> Courses { get; set; }
+        public ICollection<Course>? Courses { get; set; }
     }
 }
