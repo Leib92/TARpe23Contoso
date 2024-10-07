@@ -71,7 +71,7 @@ namespace ContosoUniversity.Controllers
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
             if (departmentToEdit == null) { return NotFound(); }
 
-            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName", departmentToEdit.InstructorID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName", departmentToEdit.InstructorID);
             return View(departmentToEdit);
         }
 
@@ -92,7 +92,7 @@ namespace ContosoUniversity.Controllers
                 Department departmentIsDeleted = new Department();
                 await TryUpdateModelAsync(departmentIsDeleted);
                 ModelState.AddModelError(string.Empty, "Department already removed.");
-                ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName", departmentIsDeleted.InstructorID);
+                ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName", departmentIsDeleted.InstructorID);
                 return View(departmentIsDeleted);
             }
 
@@ -143,7 +143,7 @@ namespace ContosoUniversity.Controllers
                     }
                 }
             }
-            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "Fullname", departmentToUpdate.InstructorID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "Fullname", departmentToUpdate.InstructorID);
             return View(departmentToUpdate);
         }
 
@@ -158,7 +158,7 @@ namespace ContosoUniversity.Controllers
                 .FirstOrDefaultAsync(m => m.DepartmentID == id);
             if (departmentToDelete == null) { return NotFound(); }
 
-            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName", departmentToDelete.InstructorID);
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName", departmentToDelete.InstructorID);
             return View(departmentToDelete);
         }
 
