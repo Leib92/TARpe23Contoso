@@ -146,5 +146,31 @@ namespace ContosoUniversity.Controllers
             ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "Fullname", departmentToUpdate.InstructorID);
             return View(departmentToUpdate);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) { return NotFound(); }
+
+            var departmentToDelete = await _context.Departments
+                .Include(i => i.Administrator)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+            if (departmentToDelete == null) { return NotFound(); }
+
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "ID", "FullName", departmentToDelete.InstructorID);
+            return View(departmentToDelete);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var department = await _context.Departments.FindAsync(id);
+            _context.Departments.Remove(department);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+            // add method to remove InstructorID from existing Department
+        }
     }
 }
