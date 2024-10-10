@@ -60,6 +60,7 @@ namespace ContosoUniversity.Controllers
             return View();
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -171,6 +172,35 @@ namespace ContosoUniversity.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
             // add method to remove InstructorID from existing Department
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> BaseOn([Bind("Name,Budget,StartDate,RowVersion,InstructorID,ForeignStudent,SummonedSkeleton")] Department department)
+        {
+            if (!ModelState.IsValid)
+            {
+                _context.Add(department);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName", department.InstructorID);
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BaseOn(int? id)
+        {
+            if (id == null) { return NotFound(); }
+
+            var departmentToBaseOn = await _context.Departments
+                .Include(i => i.Administrator)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(m => m.DepartmentID == id);
+            if (departmentToBaseOn == null) { return NotFound(); }
+
+            ViewData["InstructorID"] = new SelectList(_context.Instructors, "Id", "FullName", departmentToBaseOn.InstructorID);
+            return View(departmentToBaseOn);
         }
     }
 }

@@ -92,10 +92,24 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var instructor = await _context.Instructors.FindAsync(id);
+            var instructor = await _context.Instructors
+                .FindAsync(id);
+            var foreignkey = _context.Departments
+                .Include(i => i.InstructorID)
+                .FirstOrDefault(i => i.DepartmentID == foreignkey);
+            foreignkey.InstructorId.ForEach(i => i.DepartmentID = null);
+            _context.Departments.Remove(foreignkey);
             _context.Instructors.Remove(instructor);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
+
+            //var countryToDelete = context.Country
+            //.Include(c => c.Cities)
+            //.FirstOrDefault(c => c.CountryId == countryIdToDelete;
+            //countryToDelete.Cities.ForEach(c => c.CountryId = null);
+            //context.Country.Remove(countryToDelete);
+            //context.SaveChanges();
+
             // add method to remove InstructorID from existing Department
         }
     }
